@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/styleHRDashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+</head>
+<body>
+  <header>
+    <div>
+      <h1><%= title %></h1>
+      <p>Welcome, <%= name %>!</p>
+    </div>
+    <div class="header-right">
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <a href="/logout" class="logout-button">Logout</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="stats">
+      <div class="stat-box">
+        <h2>Total Job Posts</h2>
+        <p><%= stats.jobPostsCount %></p>
+      </div>
+      <div class="stat-box">
+        <h2>Total Applications</h2>
+        <p><%= stats.applicationsCount %></p>
+      </div>
+      <div class="stat-box">
+        <h2>Average Candidate Score</h2>
+        <p><%= stats.avgScore.toFixed(2) %></p>
+      </div>
+    </section>
+
+    <section class="charts">
+      <canvas id="applicationsChart"></canvas>
+      <canvas id="jobPostsChart"></canvas>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const applicationsData = {
+        labels: ['Job 1', 'Job 2', 'Job 3'], 
+        datasets: [{
+          label: 'Applications per Job',
+          data: [12, 19, 3], 
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1,
+        }]
+      };
+
+      const applicationsChart = new Chart(
+        document.getElementById('applicationsChart'),
+        {
+          type: 'bar',
+          data: applicationsData,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: true },
+            },
+          },
+        }
+      );
+
+      const jobPostsData = {
+        labels: ['Active', 'Archived'], 
+        datasets: [{
+          label: 'Job Posts Status',
+          data: [10, 5], 
+          backgroundColor: ['#36a2eb', '#ff6384'],
+        }]
+      };
+
+      const jobPostsChart = new Chart(
+        document.getElementById('jobPostsChart'),
+        {
+          type: 'pie',
+          data: jobPostsData,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: true },
+            },
+          },
+        }
+      );
+    });
+  </script>
+</body>
+</html>

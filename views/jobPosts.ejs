@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/styleJobPosts.css">
+  <script src="/javascripts/scripts.js"></script>
+</head>
+<body>
+  <header>
+    <div>
+      <h1><%= title %></h1>
+      <p>Welcome, <%= name %>!</p>
+    </div>
+    <div class="header-right">
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <a href="/logout" class="logout-button">Logout</a>
+      <div id="dropdownMenu" class="dropdown-menu">
+        <a href="/admin">Admin Dashboard</a>
+        <a href="/admin/job-posts">Manage Job Posts</a>
+        <a href="/admin/evaluate-candidates">Evaluate Candidates</a>
+        <a href="/admin/reports">View Reports</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="actions-container">
+      <a href="/admin/job-posts/new" class="button add">Add New Job Post</a>
+      <form action="/admin/job-posts" method="GET" class="search-form">
+        <input type="text" name="search" placeholder="Search job posts..." class="search-input">
+        <button type="submit" class="button search">Search</button>
+      </form>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Deadline</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (jobPosts && jobPosts.length > 0) { %>
+          <% jobPosts.forEach((job, index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= job.title %></td>
+              <td><%= job.description %></td>
+              <td><%= new Date(job.application_deadline).toLocaleDateString() %></td>
+              <td><%= job.status %></td>
+              <td>
+                <a href="/admin/job-posts/<%= job.id %>/edit" class="button edit">Edit</a>
+                <form action="/admin/job-posts/<%= job.id %>/delete" method="POST" style="display:inline;">
+                  <button type="submit" class="button delete">Delete</button>
+                </form>
+                <% if (job.status === 'active') { %>
+                  <form action="/admin/job-posts/<%= job.id %>/archive" method="POST" style="display:inline;">
+                    <button type="submit" class="button archive">Archive</button>
+                  </form>
+                <% } %>
+                <a href="/admin/job-posts/<%= job.id %>/applications" class="button view">View Applications</a>
+              </td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="6">No job posts available.</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+    <section class="filter-section">
+      <form action="/admin/job-posts" method="GET">
+        <fieldset>
+          <legend class="custom-legend">Filter Job Posts</legend>
+          <div class="filter-group">
+            <label for="position">Position:</label>
+            <input type="text" id="position" name="position" placeholder="Enter position title">
+          </div>
+          <div class="filter-group">
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+              <option value="">All</option>
+              <option value="active">Active</option>
+              <option value="archived">Archived</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="deadline">Deadline:</label>
+            <input type="date" id="deadline" name="deadline">
+          </div>
+          <div class="button-container">
+            <button type="submit" class="button filter">Filter</button>
+            <a href="/admin/job-posts" class="button reset">Reset</a>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+    
+  </main>
+</body>
+</html>

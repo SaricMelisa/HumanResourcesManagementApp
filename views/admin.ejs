@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/styleAdmin.css">
+  <script src="/javascripts/scripts.js"></script>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Administrator Dashboard</h1>
+      <p>Welcome, <%= name %>!</p>
+    </div>
+    <div class="header-right">
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <a href="/logout" class="logout-button">Logout</a>
+      <div id="dropdownMenu" class="dropdown-menu">
+        <a href="/admin">Admin Dashboard</a>
+        <a href="/admin/job-posts">Manage Job Posts</a>
+        <a href="/admin/evaluate-candidates">Evaluate Candidates</a>
+        <a href="/admin/reports">View Reports</a>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <div class="card-container">
+      <div class="card">
+        <h2>Create Dynamic Forms</h2>
+        <p>Design custom job application forms with required fields.</p>
+        <a href="/admin/create-form" class="button">Go to Form Builder</a>
+      </div>
+      <div class="card">
+        <h2>Manage Job Posts</h2>
+        <p>View and manage all active and archived job posts.</p>
+        <a href="/admin/job-posts" class="button">Manage Job Posts</a>
+      </div>
+      <div class="card">
+        <h2>Evaluate Candidates</h2>
+        <p>Evaluate and rank candidates for open positions.</p>
+        <a href="/admin/evaluate-candidates" class="button">Evaluate Candidates</a>
+      </div>
+      <div class="card">
+        <h2>Ranked Candidates</h2>
+        <p>View and update scores and comments for ranked candidates.</p>
+        <a href="/admin/candidates/ranked" class="button">View Ranked Candidates</a>
+      </div>
+      
+      <div class="card">
+        <h2>Interview Scheduling</h2>
+        <p>Manage and schedule interviews for candidates.</p>
+        <a href="/admin/interviews" class="button">Manage Interviews</a>
+      </div>
+      <div class="card">
+        <h2>HR Dashboard</h2>
+        <p>View real-time statistics and metrics about job posts and candidates.</p>
+        <a href="/admin/hr-dashboard" class="button">View HR Dashboard</a>
+      </div>
+      
+    </div>
+  </main>
+</body>
+</html>

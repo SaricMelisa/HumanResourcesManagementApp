@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/styleRankedJobs.css">
+</head>
+<body>
+    <header>
+        <div>
+            <h1><%= title %></h1>
+            <p>Welcome, <%= name %>!</p>
+        </div>
+        <div class="header-right">
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <a href="/logout" class="logout-button">Logout</a>
+            <div id="dropdownMenu" class="dropdown-menu">
+                <a href="/candidate">Candidate Dashboard</a>
+                <a href="/candidate/job-posts">Active Job Posts</a>
+                <a href="/candidate/applications">My Applications</a>
+                <a href="/candidate/ranked-jobs">Ranked Jobs</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h2>Ranked Jobs</h2>
+        <p>Here are the jobs ranked based on your performance or popularity among candidates.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Job Title</th>
+                    <th>Your Rank</th>
+                    <th>Average Score</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (rankedJobs && rankedJobs.length > 0) { %>
+                    <% rankedJobs.forEach((job, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= job.title %></td>
+                            <td><%= job.rank %></td>
+                            <td><%= job.average_score !== null ? job.average_score.toFixed(2) : 'N/A' %></td>
+
+                            <td>
+                                <a href="/candidate/job-posts/<%= job.id %>" class="button view">View Details</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="5">No ranked jobs available at the moment.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

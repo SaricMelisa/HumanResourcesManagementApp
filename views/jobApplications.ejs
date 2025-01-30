@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/styleJobApplications.css">
+  <script src="/javascripts/scripts.js"></script>
+</head>
+<body>
+  <header>
+    <div>
+      <h1><%= title %></h1>
+      <p>Welcome, <%= name %>!</p>
+    </div>
+    <div class="header-right">
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <a href="/logout" class="logout-button">Logout</a>
+      <div id="dropdownMenu" class="dropdown-menu">
+        <a href="/admin">Admin Dashboard</a>
+        <a href="/admin/job-posts">Manage Job Posts</a>
+        <a href="/admin/evaluate-candidates">Evaluate Candidates</a>
+        <a href="/admin/reports">View Reports</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Candidate Name</th>
+          <th>Cover Letter</th>
+          <th>Submitted At</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% applications.forEach((app, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= app.candidate_name %></td>
+            <td><%= app.cover_letter %></td>
+            <td><%= new Date(app.submitted_at).toLocaleString() %></td>
+            <td>
+              <form action="/admin/evaluate-candidates/<%= app.application_id %>/status" method="POST">
+                <select name="status" required>
+                  <option value="applied" <%= app.status === 'applied' ? 'selected' : '' %>>Applied</option>
+                  <option value="shortlisted" <%= app.status === 'shortlisted' ? 'selected' : '' %>>Shortlisted</option>
+                  <option value="interviewed" <%= app.status === 'interviewed' ? 'selected' : '' %>>Interviewed</option>
+                  <option value="rejected" <%= app.status === 'rejected' ? 'selected' : '' %>>Rejected</option>
+                </select>
+                <button type="submit" class="button update">Update</button>
+              </form>
+            </td>
+            <td>
+              <a href="/admin/interviews/<%= app.application_id %>" class="button schedule">Schedule Interview</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

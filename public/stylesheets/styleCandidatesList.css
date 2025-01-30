@@ -1,0 +1,254 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lucida Grande", Helvetica, Arial, sans-serif;  
+    background-color: #f3f2f2; 
+    color: #333; 
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #774b96; 
+    color: white;
+  }
+  
+  header h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  header p {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+  }
+  
+  .hamburger {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .hamburger:hover {
+    background-color: #a05ab3; 
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 60px; 
+    right: 20px; 
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px; 
+  }
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f4f4f4; 
+  }
+  
+  .dropdown-menu.show {
+    display: block;
+  }
+  
+  .logout-button {
+    padding: 8px 12px;
+    background-color: #882c25;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #a0332f; 
+  }
+  
+main {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.filter-sort-form {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.filter-sort-form .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.filter-sort-form label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.filter-sort-form input,
+.filter-sort-form select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 200px;
+}
+
+.button.filter {
+    background-color: #105f37;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.button.filter:hover {
+    background-color: #0b522e;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead th {
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    text-align: left;
+}
+
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    color: #fff;
+}
+
+.button.view-details {
+    background-color: #062241;
+}
+
+.button.view-details:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .filter-sort-form {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .filter-sort-form .form-group {
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+.evaluation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .evaluation-form label {
+    font-weight: bold;
+  }
+  
+  .evaluation-form input[type="number"],
+  .evaluation-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .evaluation-form textarea {
+    resize: vertical;
+  }
+  
+  .evaluation-form .button.evaluate {
+    background-color: #062241;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .evaluation-form .button.evaluate:hover {
+    background-color: #0056b3;
+  }
+  

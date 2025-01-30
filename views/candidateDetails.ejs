@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/styleCandidateDetails.css">
+</head>
+<body>
+    <header>
+        <h1><%= title %></h1>
+        <p>Welcome, <%= name %>!</p>
+        <a href="/logout" class="logout-button">Logout</a>
+    </header>
+
+    <main>
+        <h2>Details for <%= candidateDetails.candidate_name %></h2>
+        <div class="candidate-info">
+            <p><strong>Name:</strong> <%= candidateDetails.candidate_name %></p>
+            <p><strong>Email:</strong> <%= candidateDetails.email %></p>
+            <p><strong>Job Applied For:</strong> <%= candidateDetails.job_title %></p>
+            <p><strong>Submitted At:</strong> <%= new Date(candidateDetails.submitted_at).toLocaleString() %></p>
+        </div>
+
+        <div class="documents">
+            <h3>Documents:</h3>
+            <% if (candidateDetails.cover_letter) { %>
+                <p><strong>Cover Letter:</strong> <%= candidateDetails.cover_letter %></p>
+            <% } else { %>
+                <p>No documents available.</p>
+            <% } %>
+        </div>
+
+        <div class="rating-form">
+            <h3>Evaluate Candidate</h3>
+            <form action="/admin/candidates/<%= candidateDetails.application_id %>/rate" method="POST">
+                <div>
+                    <label for="score">Score (1-10):</label>
+                    <input type="number" id="score" name="score" min="1" max="10" required>
+                </div>
+                <div>
+                    <label for="comments">Comments:</label>
+                    <textarea id="comments" name="comments" rows="4" placeholder="Add your comments here..."></textarea>
+                </div>
+                <button type="submit" class="button rate">Submit Evaluation</button>
+            </form>
+        </div>
+
+        <div class="status-form">
+            <h3>Update Candidate Status</h3>
+            <form action="/admin/candidates/<%= candidateDetails.application_id %>/status" method="POST">
+                <div>
+                    <label for="status">Change Status:</label>
+                    <select id="status" name="status" required>
+                        <option value="Applied" <%= candidateDetails.status === 'Applied' ? 'selected' : '' %>>Applied</option>
+                        <option value="Interview" <%= candidateDetails.status === 'Interview' ? 'selected' : '' %>>Interview</option>
+                        <option value="Shortlisted" <%= candidateDetails.status === 'Shortlisted' ? 'selected' : '' %>>Shortlisted</option>
+                        <option value="Rejected" <%= candidateDetails.status === 'Rejected' ? 'selected' : '' %>>Rejected</option>
+                    </select>
+                </div>
+                <button type="submit" class="button update-status">Update Status</button>
+            </form>
+        </div>
+
+        <div class="interview-form">
+            <h3>Schedule Interview</h3>
+            <form action="/admin/candidates/<%= candidateDetails.application_id %>/schedule-interview" method="POST">
+                <div>
+                    <label for="interview_date">Interview Date:</label>
+                    <input type="datetime-local" id="interview_date" name="interview_date" required>
+                </div>
+                <button type="submit" class="button schedule-interview">Schedule Interview</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

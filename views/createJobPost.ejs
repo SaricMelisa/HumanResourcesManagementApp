@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/styleNewForm.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1><%= title %></h1>
+      <p>Welcome, <%= name %>!</p>
+    </div>
+    <div class="header-right">
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <a href="/logout" class="logout-button">Logout</a>
+      <div id="dropdownMenu" class="dropdown-menu">
+        <a href="/admin">Admin Dashboard</a>
+        <a href="/admin/job-posts">Manage Job Posts</a>
+        <a href="/admin/evaluate-candidates">Evaluate Candidates</a>
+        <a href="/admin/reports">View Reports</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <form action="/admin/job-posts" method="POST">
+      <fieldset>
+        <legend>Add Job Post</legend>
+
+        <div>
+          <label for="title">Job Title:</label>
+          <input type="text" id="title" name="title" placeholder="Enter job title" required>
+        </div>
+
+        <div>
+          <label for="description">Job Description:</label>
+          <textarea id="description" name="description" placeholder="Enter job description" required></textarea>
+        </div>
+
+        <div>
+          <label for="application_deadline">Application Deadline:</label>
+          <input type="date" id="application_deadline" name="application_deadline" required>
+        </div>
+
+        <button type="submit">Add Job Post</button>
+      </fieldset>
+    </form>
+  </main>
+</body>
+</html>

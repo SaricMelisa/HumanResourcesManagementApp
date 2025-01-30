@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Form</title>
+  <link rel="stylesheet" href="/stylesheets/styleCreateForm.css">
+  <script src="/javascripts/scripts.js"></script>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Create Form</h1>
+      <p>Welcome, <%= name %>!</p>
+    </div>
+    <div class="header-right">
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <a href="/logout" class="logout-button">Logout</a>
+      <div id="dropdownMenu" class="dropdown-menu">
+        <a href="/admin">Admin Dashboard</a>
+        <a href="/admin/job-posts">Manage Job Posts</a>
+        <a href="/admin/evaluate-candidates">Evaluate Candidates</a>
+        <a href="/admin/reports">View Reports</a>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <form id="dynamicForm" action="/admin/create-form/save" method="POST">
+      <fieldset>
+        <legend>Form Details</legend>
+        <div>
+          <label for="formName">Form Name:</label>
+          <input type="text" id="formName" name="formName" placeholder="Enter form name" required>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Select Fields for the Form</legend>
+
+        <div>
+          <input type="checkbox" id="cv" name="fields" value="CV">
+          <label for="cv">CV</label>
+        </div>
+
+        <div>
+          <input type="checkbox" id="coverLetter" name="fields" value="Cover Letter">
+          <label for="coverLetter">Cover Letter</label>
+        </div>
+
+        <div>
+          <input type="checkbox" id="portfolio" name="fields" value="Portfolio">
+          <label for="portfolio">Portfolio</label>
+        </div>
+
+        <div>
+          <input type="checkbox" id="certificates" name="fields" value="Certificates">
+          <label for="certificates">Certificates</label>
+        </div>
+      </fieldset>
+
+      <button type="submit">Save Form</button>
+    </form>
+  </main>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/styleRankedCandidates.css">
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Ranked Candidates</h1>
+            <p>Welcome, <%= name %>!</p>
+          </div>
+          <div class="header-right">
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <a href="/logout" class="logout-button">Logout</a>
+            <div id="dropdownMenu" class="dropdown-menu">
+              <a href="/admin">Admin Dashboard</a>
+              <a href="/admin/job-posts">Manage Job Posts</a>
+              <a href="/admin/evaluate-candidates">Evaluate Candidates</a>
+              <a href="/admin/reports">View Reports</a>
+            </div>
+          </div>
+    </header>
+
+    <main>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Candidate Name</th>
+                    <th>Job Title</th>
+                    <th>Average Score</th>
+                    <th>Comments</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% rankedCandidates.forEach((candidate, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= candidate.candidate_name %></td>
+                        <td><%= candidate.job_title %></td>
+                        <td><%= candidate.average_score.toFixed(2) %></td>
+                        <td><%= candidate.comments || "No comments available" %></td>
+                        <td>
+                            
+                            <form action="/admin/candidates/<%= candidate.id %>/update-score" method="POST" class="update-form">
+                                <label for="score-<%= candidate.id %>">Score:</label>
+                                <input type="number" id="score-<%= candidate.id %>" name="score" min="1" max="10" step="0.1" required value="<%= candidate.average_score %>">
+                                
+                                <label for="comments-<%= candidate.id %>">Comments:</label>
+                                <textarea id="comments-<%= candidate.id %>" name="comments" placeholder="Update comments"><%= candidate.comments %></textarea>
+                            
+                                <button type="submit" class="button update">Update</button>
+                            </form>
+                            
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

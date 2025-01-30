@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Dashboard</title>
+    <link rel="stylesheet" href="/stylesheets/styleCandidateDashboard.css">
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Candidate Dashboard</h1>
+            <p>Welcome, <%= name %>!</p>
+        </div>
+        <div class="header-right">
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <a href="/logout" class="logout-button">Logout</a>
+            <div id="dropdownMenu" class="dropdown-menu">
+                <a href="/candidate">Candidate Dashboard</a>
+                <a href="/candidate/job-posts">Active Job Posts</a>
+                <a href="/candidate/applications">My Applications</a>
+                <a href="/candidate/ranked-jobs">Ranked Jobs</a>
+                <a href="/candidate/profile">Edit Profile</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="card-container">
+            <div class="card">
+                <h2>Active Job Posts</h2>
+                <p>Browse currently available job posts.</p>
+                <a href="/candidate/job-posts" class="button">View Job Posts</a>
+            </div>
+
+            <div class="card">
+                <h2>My Applications</h2>
+                <p>Check the jobs you have applied for.</p>
+                <a href="/candidate/applications" class="button">View Applications</a>
+            </div>
+
+            <div class="card">
+                <h2>Ranked Jobs</h2>
+                <p>See how you rank among other candidates.</p>
+                <a href="/candidate/ranked-jobs" class="button">View Rankings</a>
+            </div>
+
+            <div class="card">
+                <h2>Edit Profile</h2>
+                <p>Update your personal information, experience, and skills.</p>
+                <a href="/candidate/profile" class="button">Edit Profile</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

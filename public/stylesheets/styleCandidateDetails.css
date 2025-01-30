@@ -1,0 +1,159 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #4B0082;
+    color: #fff;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid #00ff80ea;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+    margin: 0;
+}
+
+
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+.candidate-info {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.candidate-info p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.candidate-info strong {
+    color: #00ff80;
+}
+
+.documents {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.documents h3 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.documents p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.rating-form, .status-form {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.rating-form h3, .status-form h3 {
+    margin-bottom: 15px;
+    color: #00ff80;
+    font-size: 18px;
+    text-align: center;
+}
+
+.rating-form label, .status-form label {
+    font-size: 16px;
+    color: #fff;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.rating-form input, .rating-form textarea, .status-form select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+.rating-form textarea {
+    resize: none;
+}
+
+.rating-form button, .status-form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #00ff80;
+    color: #4B0082;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.rating-form button:hover, .status-form button:hover {
+    background-color: #00cc66;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 15px;
+    }
+
+    .candidate-info p, .documents p {
+        font-size: 14px;
+    }
+
+    .rating-form input, .rating-form textarea, .status-form select {
+        font-size: 14px;
+    }
+
+    .rating-form button, .status-form button {
+        font-size: 14px;
+    }
+}
+.logout-button {
+    color: white;
+    background-color: #5c0505;
+    border: none;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    float: right; 
+    margin-top: -25px; 
+    margin-right: 15px;
+  }
+  
+  .logout-button:hover {
+    background-color: #470b0b;
+  }
+  
+  

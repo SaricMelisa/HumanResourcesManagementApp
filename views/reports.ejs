@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/styleReports.css">
+    <script src="/javascripts/scripts.js"></script>
+</head>
+<body>
+    <header>
+        <div>
+            <h1><%= title %></h1>
+            <p>Welcome, <%= name %>!</p>
+          </div>
+          <div class="header-right">
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <a href="/logout" class="logout-button">Logout</a>
+            <div id="dropdownMenu" class="dropdown-menu">
+              <a href="/admin">Admin Dashboard</a>
+              <a href="/admin/job-posts">Manage Job Posts</a>
+              <a href="/admin/evaluate-candidates">Evaluate Candidates</a>
+              <a href="/admin/reports">View Reports</a>
+            </div>
+          </div>
+    </header>
+
+    <main>
+        <h2>HR Reports</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Total Applications</th>
+                    <th>Average Score</th>
+                    <th>Top Candidates</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (reports.length > 0) { %>
+                    <% reports.forEach(report => { %>
+                        <tr>
+                            <td><%= report.job_title %></td>
+                            <td><%= report.total_applications %></td>
+                            <td><%= report.average_score ? report.average_score.toFixed(2) : 'N/A' %></td>
+                            <td><%= report.top_candidates || 'N/A' %></td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="4">No data available.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

@@ -1,0 +1,350 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #f3f2f2; 
+    color: #333; 
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px;
+    background-color: #774b96; 
+    color: white;
+  }
+  
+  header h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  header p {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+  }
+  
+  .hamburger {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .hamburger:hover {
+    background-color: #a05ab3; 
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 60px; 
+    right: 20px; 
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px; 
+  }
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f4f4f4; 
+  }
+  
+  .dropdown-menu.show {
+    display: block;
+  }
+  
+  .logout-button {
+    padding: 8px 12px;
+    background-color: #882c25;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #a0332f; 
+  }
+  
+  table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  thead th {
+    background-color: #774b96;
+    color: #333;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    text-align: left;
+  }
+  
+  tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+  }
+  
+  tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  @media (max-width: 768px) {
+    table {
+      width: 90%;
+    }
+  }
+  /*--------------------------------------------------------------*/
+ 
+  .button-container {
+    margin-top: 20px; 
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.button.filter {
+    background-color: #092b50;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.button.filter:hover {
+    background-color: #1a0442;
+}
+
+.button.reset {
+    background-color: #570b0b;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.button.reset:hover {
+    background-color: #470c0c;
+}
+
+.actions-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 80%;
+    margin: 20px auto;
+    gap: 10px;
+}
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 300px;
+    box-sizing: border-box;
+    height: 36px;
+}
+
+.button.search {
+    background-color: #073564;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    height: 36px;
+}
+
+.button.search:hover {
+    background-color: #092b50;
+}
+
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead th {
+    background-color: #774b96;
+    color: #333;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    text-align: left;
+}
+
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    color: #fff;
+}
+
+.button.add {
+    background-color: #200b52;
+}
+
+.button.add:hover {
+    background-color: #011801;
+}
+
+.button.edit {
+    background-color: #062241;
+}
+
+.button.edit:hover {
+    background-color: #0056b3;
+}
+
+.button.delete {
+    background-color: #2b0307;
+}
+
+.button.delete:hover {
+    background-color: #b02a37;
+}
+
+.button.archive {
+    background-color: #302402;
+}
+
+.button.archive:hover {
+    background-color: #e0a800;
+}
+
+.button.view {
+    background-color: #073564;
+    color: #fff;
+}
+
+.button.view:hover {
+    background-color: #092b50;
+}
+
+
+.filter-section {
+    margin: 20px auto;
+    padding: 20px;
+    color: black;
+    background:#774b96;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+}
+
+.filter-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+}
+.custom-legend {
+    color: black;
+    font-size: 18px;
+  }
+  
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 5px; 
+}
+
+.filter-group label {
+    font-weight: bold;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 95%;
+    max-width: 400px;
+}
+
+@media (max-width: 768px) {
+    .actions-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .filter-section input,
+    .filter-section select {
+        width: 100%;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

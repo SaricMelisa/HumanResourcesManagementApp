@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/styleCandidatesList.css">
+    <script src="/javascripts/scripts.js"></script>
+</head>
+<body>
+    <header>
+        <div>
+            <h1><%= title %></h1>
+            <p>Welcome, <%= name %>!</p>
+        </div>
+        <div class="header-right">
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <a href="/logout" class="logout-button">Logout</a>
+            <div id="dropdownMenu" class="dropdown-menu">
+                <a href="/candidate">Candidate Dashboard</a>
+                <a href="/candidate/job-posts">Active job posts for you</a>
+                <a href="/candidate/application">My applications</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h2>Candidates for Job Post</h2>
+
+        <form action="/admin/evaluate-candidates/<%= jobId %>" method="GET" class="filter-sort-form">
+            <div class="form-group">
+                <label for="minScore">Minimum Score:</label>
+                <input type="number" name="minScore" id="minScore" placeholder="Enter minimum score" min="1" max="10" step="1">
+            </div>
+            <div class="form-group">
+                <label for="sortOrder">Sort By:</label>
+                <select name="sortOrder" id="sortOrder">
+                    <option value="desc">Highest to Lowest</option>
+                    <option value="asc">Lowest to Highest</option>
+                </select>
+            </div>
+            <button type="submit" class="button filter">Filter & Sort</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Average Score</th>
+                    <th>Submitted At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% candidates.forEach((candidate, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= candidate.candidate_name %></td>
+                        <td>
+                            <%= typeof candidate.average_score === 'number' ? candidate.average_score.toFixed(2) : 'N/A' %>
+                        </td>
+                        <td><%= new Date(candidate.submitted_at).toLocaleDateString() %></td>
+                        <td>
+                            <form action="/admin/candidates/<%= candidate.id %>/evaluate" method="POST" class="evaluation-form">
+                                <div class="form-group">
+                                    <label for="score-<%= candidate.id %>">Score:</label>
+                                    <input 
+                                        type="number" 
+                                        id="score-<%= candidate.id %>" 
+                                        name="score" 
+                                        min="1" 
+                                        max="10" 
+                                        step="1" 
+                                        required
+                                    >
+                                </div>
+                                <div class="form-group">
+                                    <label for="comments-<%= candidate.id %>">Comments:</label>
+                                    <textarea 
+                                        id="comments-<%= candidate.id %>" 
+                                        name="comments" 
+                                        placeholder="Add comments" 
+                                        required
+                                    ></textarea>
+                                </div>
+                                <button type="submit" class="button evaluate">Submit</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

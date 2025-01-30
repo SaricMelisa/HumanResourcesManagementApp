@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/styleEvaluateCandidates.css">
+  <script src="/javascripts/scripts.js"></script>
+</head>
+<body>
+  <header>
+    <div>
+      <h1><%= title %></h1>
+      <p>Welcome, <%= name %>!</p>
+    </div>
+    <div class="header-right">
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <a href="/logout" class="logout-button">Logout</a>
+      <div id="dropdownMenu" class="dropdown-menu">
+        <a href="/admin">Admin Dashboard</a>
+        <a href="/admin/job-posts">Manage Job Posts</a>
+        <a href="/admin/evaluate-candidates">Evaluate Candidates</a>
+        <a href="/admin/reports">View Reports</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Select a Job Post to Evaluate Candidates</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Deadline</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% jobPosts.forEach((job, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= job.title %></td>
+            <td><%= job.description %></td>
+            <td><%= new Date(job.application_deadline).toLocaleDateString() %></td>
+            <td>
+              <a href="/admin/evaluate-candidates/<%= job.id %>" class="button view">View Candidates</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

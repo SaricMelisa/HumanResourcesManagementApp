@@ -1,0 +1,28 @@
+body, h1, h2, h3, p, ul, ol, li, a {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #4B0082;
+  color: #fff;
+}
+.logout-button {
+  color: white;
+  background-color: #5c0505;
+  border: none;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  float: right; 
+  margin-top: -25px; 
+  margin-right: 15px;
+}
+
+.logout-button:hover {
+  background-color: #470b0b;
+}
